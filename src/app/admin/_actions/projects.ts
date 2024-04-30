@@ -82,7 +82,7 @@ export async function updateProduct(
   let filePath = product.filePath;
   if (data.file != null && data.file.size > 0) {
     await fs.unlink(product.filePath);
-    filePath = `products/${crypto.randomUUID()}-${data.file.name}`;
+    filePath = `projects/${crypto.randomUUID()}-${data.file.name}`;
     await fs.writeFile(filePath, Buffer.from(await data.file.arrayBuffer()));
   }
 

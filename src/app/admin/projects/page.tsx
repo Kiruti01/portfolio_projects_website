@@ -28,9 +28,9 @@ export default function AdminProductsPage() {
     return (
         <>
             <div className="flex justify-between items-center gap-4">
-                <PageHeader>Products</PageHeader>
+                <PageHeader>Projects</PageHeader>
                 <Button asChild>
-                    <Link href="/admin/projects/new">Add Product</Link>
+                    <Link href="/admin/projects/new">Add Project</Link>
                 </Button>
             </div>
             <ProductsTable />
