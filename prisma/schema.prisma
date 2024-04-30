@@ -6,12 +6,12 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlite"
+  provider = "mongodb"
   url      = env("DATABASE_URL")
 }
 
 model Product {
-  id                     String                 @id @default(uuid())
+  id                     String                 @id @default(uuid()) @map("_id")
   name                   String
   // priceInCents           Int
   filePath               String
@@ -27,7 +27,7 @@ model Product {
 }
 
 model User {
-  id        String   @id @default(uuid())
+  id        String   @id @default(uuid()) @map("_id")
   email     String   @unique
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -35,7 +35,7 @@ model User {
 }
 
 model Order {
-  id               String   @id @default(uuid())
+  id               String   @id @default(uuid()) @map("_id")
   pricePaidInCents Int
   createdAt        DateTime @default(now())
   updatedAt        DateTime @updatedAt
@@ -47,7 +47,7 @@ model Order {
 }
 
 model DownloadVerification {
-  id        String   @id @default(uuid())
+  id        String   @id @default(uuid()) @map("_id")
   expiresAt DateTime
   createdAt DateTime @default(now())
   productId String
