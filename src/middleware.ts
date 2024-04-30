@@ -2,7 +2,10 @@ import { NextRequest, NextResponse } from "next/server";
 import { isValidPassword } from "./lib/isValidPassword";
 
 export async function middleware(req: NextRequest) {
-  if ((await isAuthenticated(req)) === false) {
+  const isAdminPath = req.nextUrl.pathname.startsWith("/admin");
+
+  // Only enforce authentication for routes under the /admin path
+  if (isAdminPath && (await isAuthenticated(req)) === false) {
     return new NextResponse("Unauthorized", {
       status: 401,
       headers: { "WWW-Authenticate": "Basic" },
@@ -30,5 +33,6 @@ async function isAuthenticated(req: NextRequest) {
 }
 
 export const config = {
-  matcher: "/admin/:path*",
+  // Apply the middleware globally to all routes
+  middleware: "all",
 };
