@@ -18,7 +18,7 @@ const getProduct = cache((id: string) => {
             id: id,
         },
     })
-}, ["/", "getProduct"], { revalidate: 60 * 60 * 24 })
+}, ["/", "getProduct"], { revalidate: 60 * 1 })
 
 export default function ProductItem() {
     // "use client"
