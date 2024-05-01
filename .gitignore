@@ -35,7 +35,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
-/products
-/public/products
-# public/projects
-# /projects
+# /products
+# /public/products
+public/projects
+/projects
